@@ -1,26 +1,234 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Themes are set on <html data-theme="dusk|morning">. Dusk is the default. */
+@custom-variant morning (&:where([data-theme="morning"], [data-theme="morning"] *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Reach Out palette */
+  --color-apricot: var(--apricot);
+  --color-sage: var(--sage);
+  --color-sky: var(--sky);
+  --color-lavender: var(--lavender);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-ink: var(--ink);
+  --color-apricot-text: var(--apricot-text);
+  --color-sage-text: var(--sage-text);
+  --color-sky-text: var(--sky-text);
+  --color-lavender-text: var(--lavender-text);
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Dusk (default). All text pairs checked for WCAG AA against #1E2A47 and #3B3361. */
+:root {
+  --bg-from: #1e2a47;
+  --bg-to: #3b3361;
+  --bg-shift: #2a2f58;
+
+  --apricot: #f5a97f;
+  --sage: #9cc5a1;
+  --sky: #a9c7e8;
+  --lavender: #c3b1e1;
+  /* accent colours used as text (same on dusk, darker on morning) */
+  --apricot-text: #f5a97f;
+  --sage-text: #9cc5a1;
+  --sky-text: #a9c7e8;
+  --lavender-text: #c3b1e1;
+
+  --surface: rgb(244 241 236 / 0.07);
+  --surface-strong: rgb(244 241 236 / 0.12);
+  --ink: #1e2a47;
+
+  --background: #1e2a47;
+  --foreground: #f4f1ec;
+  --card: #283253;
+  --card-foreground: #f4f1ec;
+  --popover: #262f50;
+  --popover-foreground: #f4f1ec;
+  --primary: #f5a97f;
+  --primary-foreground: #1e2a47;
+  --secondary: rgb(244 241 236 / 0.1);
+  --secondary-foreground: #f4f1ec;
+  --muted: rgb(244 241 236 / 0.1);
+  --muted-foreground: #cfc9dc;
+  --accent: rgb(244 241 236 / 0.12);
+  --accent-foreground: #f4f1ec;
+  --destructive: #f2b8a0;
+  --border: rgb(244 241 236 / 0.1);
+  --input: rgb(244 241 236 / 0.1);
+  --ring: #f5a97f;
+  --radius: 1.25rem;
+  color-scheme: dark;
+}
+
+:root[data-theme="morning"] {
+  --bg-from: #fbf7f1;
+  --bg-to: #fde8d7;
+  --bg-shift: #fbeee4;
+
+  --apricot-text: #9a4a22;
+  --sage-text: #3c6a45;
+  --sky-text: #2f5f8f;
+  --lavender-text: #66509a;
+
+  --surface: rgb(255 255 255 / 0.6);
+  --surface-strong: rgb(255 255 255 / 0.85);
+  --ink: #2e2a33;
+
+  --background: #fbf7f1;
+  --foreground: #2e2a33;
+  --card: #fffbf6;
+  --card-foreground: #2e2a33;
+  --popover: #fffbf6;
+  --popover-foreground: #2e2a33;
+  --primary: #f5a97f;
+  --primary-foreground: #2e2a33;
+  --secondary: rgb(46 42 51 / 0.06);
+  --secondary-foreground: #2e2a33;
+  --muted: rgb(46 42 51 / 0.06);
+  --muted-foreground: #574f60;
+  --accent: rgb(46 42 51 / 0.07);
+  --accent-foreground: #2e2a33;
+  --destructive: #9a3412;
+  --border: rgb(46 42 51 / 0.1);
+  --input: rgb(46 42 51 / 0.08);
+  --ring: #b45a2c;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    /* keep focused/anchored content clear of the sticky nav */
+    scroll-padding-top: 6.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  label {
+    touch-action: manipulation;
+  }
+  body {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--foreground);
+    background: linear-gradient(160deg, var(--bg-from) 0%, var(--bg-to) 100%) fixed;
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-rounded, system-ui, sans-serif;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+  /* form fields: shadcn turns outlines off, so restate the accent focus ring firmly */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid var(--ring) !important;
+    outline-offset: 2px !important;
+  }
+  ::selection {
+    background: var(--lavender);
+    color: #1e2a47;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* The slow-shifting dusk sky: a second gradient layer that fades in and out (opacity only). */
+.sky-shift {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(200deg, var(--bg-shift) 0%, var(--bg-from) 55%, var(--bg-to) 100%);
+  opacity: 0;
+  animation: sky-breathe 12s ease-in-out infinite alternate;
+}
+@keyframes sky-breathe {
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* Gentle press squish for anything with .squish */
+.squish {
+  transition: transform 180ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.squish:active {
+  transform: scale(0.96);
+}
+
+/* Calm mode + reduced motion: stop CSS loops. Framer Motion loops are switched off in MotionProvider. */
+html[data-calm="true"] .sky-shift,
+html[data-hidden="true"] .sky-shift {
+  animation-play-state: paused;
+}
+html[data-calm="true"] .sky-shift {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-shift {
+    animation: none;
+  }
+  .squish:active {
+    transform: none;
+  }
+}
+html[data-calm="true"] .squish:active {
+  transform: none;
+}
+
+/* Soft blob shape for bubbles */
+.blob {
+  border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+}
+.blob-alt {
+  border-radius: 58% 42% 45% 55% / 45% 55% 45% 55%;
 }
