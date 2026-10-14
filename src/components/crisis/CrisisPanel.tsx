@@ -1,9 +1,9 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { Phone, ChatCircleText, X, Heart } from "@phosphor-icons/react";
+import { ArrowSquareOut, Phone, ChatCircleText, X, Heart } from "@phosphor-icons/react";
 import { createContext, useCallback, useContext, useState } from "react";
-import { helplines } from "@/data/helplines";
+import { HELPLINES_CHECKED, NHS_URGENT_URL, helplines } from "@/data/helplines";
 import { cn } from "@/lib/utils";
 
 // The crisis panel. SAFETY: it must open instantly, so there is deliberately
@@ -35,7 +35,8 @@ export function CrisisProvider({ children }: { children: React.ReactNode }) {
                 </Dialog.Title>
                 <Dialog.Description className="mt-2 text-muted-foreground">
                   These people are there to help, right now. It&apos;s free and you don&apos;t need to
-                  have the right words.
+                  have the right words. PULSE is not an emergency service: nobody is monitoring it, and it can&apos;t
+                  contact anyone for you.
                 </Dialog.Description>
               </div>
               <Dialog.Close
@@ -95,6 +96,20 @@ export function CrisisProvider({ children }: { children: React.ReactNode }) {
             <p className="mt-6 flex items-start gap-2 text-base text-muted-foreground">
               <Heart size={20} weight="duotone" className="mt-1 shrink-0 text-apricot-text" aria-hidden />
               If you can, you could also tell a trusted adult nearby: a parent, carer, teacher or friend.
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              In immediate danger you can also go to A&amp;E. These options are for England and the UK; elsewhere, use local emergency
+              and crisis services.{" "}
+              <a
+                href={NHS_URGENT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-semibold underline underline-offset-4 hover:no-underline"
+              >
+                NHS urgent-help information <ArrowSquareOut size={14} weight="bold" aria-hidden />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+              . {HELPLINES_CHECKED}
             </p>
           </Dialog.Popup>
         </Dialog.Portal>

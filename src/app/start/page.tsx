@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Walkthrough } from "@/components/walkthrough/Walkthrough";
 
-export const metadata: Metadata = { title: "Help me reach out | Reach Out" };
+export const metadata: Metadata = { title: "Start here | PULSE: FIRST LOOK" };
 
-export default function ReachOutPage() {
+export default function StartPage() {
   return <Walkthrough />;
 }

@@ -1,6 +1,10 @@
 // UK support services shown in the "Need help now?" panel.
 // Keep these accurate. Check numbers before any public launch.
 
+export const NHS_URGENT_URL = "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/";
+/** From the PULSE export. Re-check every number and link before deployment. */
+export const HELPLINES_CHECKED = "Checked against NHS guidance on 7 October 2026; check again before launch.";
+
 export type Helpline = {
   id: string;
   name: string;

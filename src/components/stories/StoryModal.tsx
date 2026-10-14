@@ -4,9 +4,11 @@ import { Dialog } from "@base-ui/react/dialog";
 import { ArrowRight, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { StoryAvatar } from "@/components/avatar/StoryAvatar";
-import type { Story } from "@/data/stories";
+import { usePulse } from "@/components/pulse/PulseProvider";
+import { storyBoundary, type Story } from "@/data/stories";
 
 export function StoryModal({ story, onClose }: { story: Story | null; onClose: () => void }) {
+  const { openPanel } = usePulse();
   return (
     <Dialog.Root open={!!story} onOpenChange={(o) => !o && onClose()}>
       <Dialog.Portal>
@@ -21,6 +23,7 @@ export function StoryModal({ story, onClose }: { story: Story | null; onClose: (
                     {story.displayName}, {story.age}
                   </Dialog.Title>
                   <p className="text-base text-muted-foreground">Reached out to: {story.reachedOutTo}</p>
+                  <p className="mt-1 inline-block rounded-full bg-surface-strong px-3 py-0.5 text-sm font-semibold">Example story, not a real person</p>
                 </div>
                 <Dialog.Close
                   aria-label="Close story"
@@ -38,6 +41,7 @@ export function StoryModal({ story, onClose }: { story: Story | null; onClose: (
                 <span className="text-sage-text">What helped me: </span>
                 {story.whatHelped}
               </p>
+              <p className="mt-4 text-sm text-muted-foreground">{storyBoundary}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href={`/stories/${story.id}`}
@@ -45,12 +49,16 @@ export function StoryModal({ story, onClose }: { story: Story | null; onClose: (
                 >
                   Open full page <ArrowRight size={18} aria-hidden />
                 </Link>
-                <Link
-                  href="/reach-out"
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    openPanel("draft");
+                  }}
                   className="squish inline-flex h-12 items-center gap-2 rounded-full bg-apricot px-5 font-semibold text-ink"
                 >
-                  Help me reach out
-                </Link>
+                  Prepare my first question
+                </button>
               </div>
             </>
           )}

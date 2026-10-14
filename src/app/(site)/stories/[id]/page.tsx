@@ -6,7 +6,8 @@ import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 import { StoryAvatar } from "@/components/avatar/StoryAvatar";
 import { CrisisButton } from "@/components/crisis/CrisisButton";
 import { Reveal } from "@/components/site/Reveal";
-import { getStory, stories } from "@/data/stories";
+import { StoryNextStep } from "@/components/stories/StoryNextStep";
+import { getStory, stories, storyBoundary } from "@/data/stories";
 
 export function generateStaticParams() {
   return stories.map((s) => ({ id: s.id }));
@@ -19,8 +20,8 @@ export async function generateMetadata({
   const story = getStory(id);
   return {
     title: story
-      ? `${story.displayName}'s story | Reach Out`
-      : "Story | Reach Out",
+      ? `${story.displayName}'s story (example) | PULSE: FIRST LOOK`
+      : "Story | PULSE: FIRST LOOK",
   };
 }
 
@@ -113,7 +114,7 @@ async function StoryContent({
       </Reveal>
 
       <p className="mt-6 text-sm text-muted-foreground">
-        An illustrative example written for this prototype.
+        An illustrative example written for this prototype, not a real person or an approved contribution. {storyBoundary}
       </p>
 
       {/* Signposting: every story ends here. */}
@@ -130,16 +131,10 @@ async function StoryContent({
             If this sounds like you, you could take the first step too.
           </h2>
           <p className="relative mt-3 max-w-lg text-muted-foreground">
-            Buddy can help you think about who to talk to. It takes about two
-            minutes.
+            Want to prepare your own words? You can edit a first question here. Nothing is sent for you.
           </p>
           <div className="relative mt-6 flex flex-wrap items-center gap-4">
-            <Link
-              href="/reach-out"
-              className="squish inline-flex h-14 items-center rounded-full bg-apricot px-7 text-lg font-semibold text-ink"
-            >
-              Help me reach out
-            </Link>
+            <StoryNextStep />
             <CrisisButton variant="text" />
           </div>
         </aside>

@@ -1,4 +1,7 @@
 // ILLUSTRATIVE EXAMPLES FOR THE PROTOTYPE.
+// Always label these as examples. They are NOT approved community contributions, and they are
+// never used as sources for the PULSE AI guides. Genuine contributions need secure submission
+// and human review, which do not exist yet (see `genuineStories` below).
 // These stories were written for the hackathon demo. They are not real people.
 // Safe-story rules: focus on the act of reaching out and what helped.
 // No details of distress, no methods, weights or quantities. Hope and recovery only.
@@ -124,8 +127,8 @@ export const stories: Story[] = [
     illustrative: true,
   },
   {
-    id: "theo",
-    displayName: "Theo",
+    id: "tomas",
+    displayName: "Tomás",
     age: 15,
     avatarSeed: "theo-cloud",
     reachedOutTo: "Our school counsellor",
@@ -147,9 +150,9 @@ export const stories: Story[] = [
     reachedOutTo: "A friend online",
     opening: "My closest friend lives two hours away, so I sent her a voice note.",
     body: [
-      "My closest friend Noor lives two hours away now, so I sent her a voice note at about 11pm saying I'd been struggling.",
+      "My closest friend Hana lives two hours away now, so I sent her a voice note at about 11pm saying I'd been struggling.",
       "She called me the next morning and we talked for ages. She encouraged me to tell someone nearby as well, and helped me plan what to say.",
-      "I told my mum that weekend. Noor texted me afterwards to ask how it went, which meant a lot.",
+      "I told my mum that weekend. Hana texted me afterwards to ask how it went, which meant a lot.",
     ],
     whatHelped: "A friend who cheered me on to tell someone else too.",
     tags: ["friend"],
@@ -172,6 +175,13 @@ export const stories: Story[] = [
     illustrative: true,
   },
 ];
+
+/** Genuine, human-reviewed contributions published with consent. None exist yet. */
+export const genuineStories: Story[] = [];
+
+/** Shown wherever a story is read. From PULSE's reflection boundary. */
+export const storyBoundary =
+  "One person’s experience, not professional guidance or a promise of what will happen for someone else. Stories are not sources for PULSE’s AI guides.";
 
 export function getStory(id: string) {
   return stories.find((s) => s.id === id);

@@ -170,7 +170,7 @@
   }
   /* form fields: shadcn turns outlines off, so restate the accent focus ring firmly */
   input:focus-visible,
-  textarea:focus-visible,
+  textarea:not([data-composer]):focus-visible,
   select:focus-visible {
     outline: 3px solid var(--ring) !important;
     outline-offset: 2px !important;

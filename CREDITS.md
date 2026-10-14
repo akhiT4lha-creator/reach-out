@@ -16,3 +16,10 @@
 
 ## Fonts
 - Fredoka and Atkinson Hyperlegible via Google Fonts (`next/font`), SIL Open Font License 1.1
+
+## PULSE: FIRST LOOK content
+- Product identity, the seven guide personalities, service process steps, source register and question template come
+  from the team's PULSE prototype export (`PULSE-Website.html`), rebuilt as data modules in `src/data/pulse/`.
+- Childline guidance is quoted from childline.org.uk (retrieved 7 October 2026). Childline has not endorsed PULSE.
+- Survey figures: NHS England, Mental Health of Children and Young People in England, 2023, Table 3.5.
+- Guide portraits use DiceBear "Lorelei" (CC0 1.0), as above. Used in: src/components/pulse/GuideAvatar.tsx

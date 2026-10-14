@@ -3,6 +3,7 @@ import { Atkinson_Hyperlegible, Fredoka } from "next/font/google";
 import { CrisisButton } from "@/components/crisis/CrisisButton";
 import { CrisisProvider } from "@/components/crisis/CrisisPanel";
 import { MotionProvider, prefsScript } from "@/components/motion/MotionProvider";
+import { PulseProvider } from "@/components/pulse/PulseProvider";
 import "./globals.css";
 
 const display = Fredoka({
@@ -18,8 +19,9 @@ const body = Atkinson_Hyperlegible({
 });
 
 export const metadata: Metadata = {
-  title: "Reach Out",
-  description: "Real-feeling stories of young people who reached out, and a gentle first step to do the same.",
+  title: "PULSE: FIRST LOOK",
+  description:
+    "Understand first. Decide later. Preview what contacting support involves, check where the information comes from, and prepare a first question with seven AI guides.",
 };
 
 export const viewport: Viewport = {
@@ -36,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="sky-shift" aria-hidden />
         <MotionProvider>
           <CrisisProvider>
+            <PulseProvider>
             <a
               href="#main"
               className="sr-only z-[100] rounded-full bg-apricot px-5 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -44,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </a>
             {children}
             <CrisisButton variant="floating" />
+            </PulseProvider>
           </CrisisProvider>
         </MotionProvider>
       </body>

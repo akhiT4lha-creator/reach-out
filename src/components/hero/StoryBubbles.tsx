@@ -103,7 +103,7 @@ function Bubble({ story, spot, index, onOpen }: { story: Story; spot: Spot; inde
         animate={{ opacity: 1, scale: active ? 1.08 : 1 }}
         whileTap={{ scale: 0.97 }}
         transition={{ type: "spring", stiffness: 120, damping: 18, opacity: { duration: 0.8, delay: 0.2 + index * 0.08 } }}
-        aria-label={`Read ${story.displayName}'s story, age ${story.age}: ${story.opening}`}
+        aria-label={`Read ${story.displayName}'s example story, age ${story.age}: ${story.opening}`}
         className={cn(
           index % 2 ? "blob-alt" : "blob",
           tint,
@@ -129,7 +129,7 @@ export function StoryBubbles({ className }: { className?: string }) {
   const shown = stories.slice(0, Math.min(MAX_BUBBLES, spots.length));
   return (
     <>
-      <div className={cn("relative", className)} role="group" aria-label="Stories from young people">
+      <div className={cn("relative", className)} role="group" aria-label="Example stories written for this prototype">
         {shown.map((s, i) => (
           <Bubble key={s.id} story={s} spot={spots[i]} index={i} onOpen={setOpen} />
         ))}
