@@ -15,6 +15,7 @@ export function Panel({
   description,
   wide = false,
   side = false,
+  onClosed,
   children,
 }: {
   open: boolean;
@@ -23,10 +24,12 @@ export function Panel({
   description?: React.ReactNode;
   wide?: boolean;
   side?: boolean;
+  /** Runs once the panel has fully closed (exit animation done, page scroll unlocked). */
+  onClosed?: () => void;
   children: React.ReactNode;
 }) {
   return (
-    <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()}>
+    <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()} onOpenChangeComplete={(o) => !o && onClosed?.()}>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-[75] bg-[#141b30]/55 backdrop-blur-sm transition-opacity duration-300 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
         <Dialog.Popup

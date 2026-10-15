@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { List, Moon, Sun, Wind } from "@phosphor-icons/react";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CrisisButton } from "@/components/crisis/CrisisButton";
 import { useMotionPrefs } from "@/components/motion/MotionProvider";
 import { Panel } from "@/components/pulse/Panel";
@@ -14,7 +14,21 @@ import { cn } from "@/lib/utils";
 export function Logo() {
   return (
     <Link href="/" aria-label="PULSE: FIRST LOOK, home" className="flex shrink-0 items-center gap-2 rounded-full font-heading text-xl font-semibold">
-      <span aria-hidden className="blob inline-block size-8 bg-gradient-to-br from-lavender via-sky to-sage" />
+      <span aria-hidden className="relative inline-block size-9">
+        <span className="blob absolute inset-0 bg-gradient-to-br from-lavender via-sky to-sage" />
+        {/* the lifeline: a heartbeat running through the bubble and just past its edges */}
+        <svg viewBox="0 0 40 40" fill="none" className="absolute -inset-x-1 inset-y-0 h-full w-[calc(100%+0.5rem)] overflow-visible">
+          <path
+            className="lifeline"
+            pathLength={1}
+            d="M1 21h10l3-6 4 14 5-22 4 18 2-4h10"
+            stroke="var(--color-ink, #141b30)"
+            strokeWidth={3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
       <span aria-hidden>PULSE</span>
       <span aria-hidden className="hidden rounded-full bg-surface-strong px-2.5 py-0.5 text-xs font-semibold tracking-wide text-muted-foreground sm:inline xl:hidden">
         FIRST LOOK
@@ -72,6 +86,16 @@ export function SiteNav() {
   const onHome = pathname === "/";
   const active = useActiveSection(onHome);
   const [menuOpen, setMenuOpen] = useState(false);
+  // A section picked from the menu. We jump only after the menu has fully closed,
+  // because closing it restores the old scroll position and would undo an earlier jump.
+  const pendingJump = useRef<SectionId | null>(null);
+  const jumpAfterClose = () => {
+    const id = pendingJump.current;
+    pendingJump.current = null;
+    if (!id) return;
+    document.getElementById(id)?.scrollIntoView();
+    history.replaceState(null, "", `#${id}`);
+  };
 
   const linkClass = (id: string) =>
     cn(
@@ -110,13 +134,19 @@ export function SiteNav() {
         </div>
       </nav>
 
-      <Panel open={menuOpen} onClose={() => setMenuOpen(false)} title="Jump to a section">
+      <Panel open={menuOpen} onClose={() => setMenuOpen(false)} onClosed={jumpAfterClose} title="Jump to a section">
         <ol className="grid gap-2">
           {sections.map((s, i) => (
             <li key={s.id}>
               <Link
                 href={`/#${s.id}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  if (onHome) {
+                    e.preventDefault();
+                    pendingJump.current = s.id;
+                  }
+                  setMenuOpen(false);
+                }}
                 aria-current={onHome && active === s.id ? "location" : undefined}
                 className={cn(
                   "squish flex items-center gap-4 rounded-[22px] px-4 py-3 font-heading text-lg font-semibold transition-colors",

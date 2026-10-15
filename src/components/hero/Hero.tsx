@@ -51,10 +51,10 @@ export function Hero() {
               </motion.span>
               <motion.span whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
                 <Link
-                  href="#about"
+                  href="#guides"
                   className="squish inline-flex h-14 items-center rounded-full bg-surface-strong px-7 text-lg font-semibold backdrop-blur hover:bg-accent"
                 >
-                  See how it works
+                  Meet the guides
                 </Link>
               </motion.span>
             </motion.div>

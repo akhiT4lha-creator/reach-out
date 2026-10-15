@@ -225,6 +225,26 @@ html[data-calm="true"] .squish:active {
   transform: none;
 }
 
+/* The logo's heartbeat line draws itself in once on load. Calm mode shows it already drawn. */
+.lifeline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: lifeline-draw 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+}
+@keyframes lifeline-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+html[data-calm="true"] .lifeline {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lifeline {
+    animation: none;
+  }
+}
+
 /* Soft blob shape for bubbles */
 .blob {
   border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
