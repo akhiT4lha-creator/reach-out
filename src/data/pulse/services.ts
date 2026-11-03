@@ -19,7 +19,7 @@ export type Service = {
   stepSources: string[][];
   /** Extra note shown on a particular step. */
   stepNotes?: Record<number, string>;
-  /** Starter question used when moving from this process to an AI guide. */
+  /** Starter question used when moving from this process to a guide. */
   guideQuestion: string;
 };
 

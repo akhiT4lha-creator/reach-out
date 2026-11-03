@@ -144,7 +144,7 @@ export function Walkthrough() {
                 {stage === "unsure" && (
                   <>
                     <p className="mt-3 text-muted-foreground">
-                      You can see what contacting support involves, or choose an AI guide and try a process question.
+                      You can see what contacting support involves, or choose a guide and work out who to talk to.
                     </p>
                     <div className="mt-6 grid gap-3">
                       <ChoiceButton title="Show me the support process" detail="Explore the steps and their sources." onClick={() => go("process")} />
@@ -163,7 +163,7 @@ export function Walkthrough() {
 
                 {stage === "guides" && (
                   <>
-                    <p className="mt-3 text-muted-foreground">All seven share the same knowledge and capabilities. This is a style preference, not an assessment.</p>
+                    <p className="mt-3 text-muted-foreground">All four share the same knowledge and capabilities. This is a style preference, not an assessment.</p>
                     <div role="group" aria-label="Guide styles" className="mt-5 grid gap-2 sm:grid-cols-2">
                       {guides.map((x) => (
                         <button
@@ -189,7 +189,6 @@ export function Walkthrough() {
                       <div>
                         <p className="text-sm font-semibold text-muted-foreground">Example of {g.name}’s voice</p>
                         <p className="font-heading text-xl leading-snug">&ldquo;{g.sampleOpening}&rdquo;</p>
-                        <p className="text-sm text-muted-foreground">Illustrative wording, not a generated reply.</p>
                       </div>
                     </div>
                     {seed && (
@@ -201,7 +200,7 @@ export function Walkthrough() {
                     <button type="button" onClick={() => startChat(g.id, seed || svc.guideQuestion)} className={`${btn.primary} mt-5`}>
                       Start with {g.name} <ArrowUpRight size={20} weight="bold" aria-hidden />
                     </button>
-                    <p className="mt-3 text-sm text-muted-foreground">Opening a guide starts a new chat. A connected AI model is needed to send questions.</p>
+                    <p className="mt-3 text-sm text-muted-foreground">Opening a guide starts a new chat. Sending questions needs a connected guide.</p>
                   </>
                 )}
 

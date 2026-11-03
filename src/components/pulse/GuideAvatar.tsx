@@ -3,8 +3,8 @@ import { lorelei } from "@dicebear/collection";
 import { getGuide, type GuideId } from "@/data/pulse/guides";
 import { cn } from "@/lib/utils";
 
-// The seven guides drawn in Reach Out's illustration style (DiceBear "Lorelei", CC0),
-// on each guide's original PULSE colour. Theo, Ellis and Quinn keep their glasses.
+// The four guides drawn in Reach Out's illustration style (DiceBear "Lorelei", CC0),
+// on each guide's original PULSE colour. Theo keeps the glasses.
 const cache = new Map<GuideId, string>();
 
 function uri(id: GuideId) {
@@ -41,7 +41,7 @@ export function GuideAvatar({
       src={uri(id)}
       width={size}
       height={size}
-      alt={decorative ? "" : `${g.name}, fictional AI guide`}
+      alt={decorative ? "" : `${g.name}, fictional guide`}
       draggable={false}
       className={cn("shrink-0 rounded-full", className)}
     />

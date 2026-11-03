@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
-import { BackgroundBlobs } from "./BackgroundBlobs";
-import { StoryBubbles } from "./StoryBubbles";
+import { StoryOrbit } from "./StoryOrbit";
 
 const rise = {
   hidden: { opacity: 0, y: 18 },
@@ -13,54 +12,33 @@ const rise = {
 
 export function Hero() {
   return (
-    <section className="relative isolate -mt-[76px] overflow-x-clip pt-[76px] md:min-h-[100dvh]">
-      <BackgroundBlobs className="[mask-image:linear-gradient(to_bottom,black_65%,transparent)]" />
-      <div className="relative mx-auto max-w-6xl px-4 md:px-6">
-        {/* Bubble field: own block on phones, fills the hero behind/right of the text on desktop */}
-        <div className="pointer-events-none relative z-20 pt-10 md:flex md:min-h-[calc(100dvh-76px)] md:items-center md:pt-0">
-          <div className="pointer-events-auto max-w-xl">
-            <motion.p
-              variants={rise}
-              initial="hidden"
-              animate="show"
-              custom={0}
-              className="mb-4 inline-block rounded-full bg-surface-strong px-4 py-1.5 text-base font-semibold backdrop-blur"
-            >
-              Understand first. Decide later.
-            </motion.p>
-            <motion.h1
-              variants={rise}
-              initial="hidden"
-              animate="show"
-              custom={0}
-              className="text-[2.6rem] font-semibold leading-[1.08] tracking-tight md:text-6xl"
-            >
+    <section className="relative isolate -mt-[76px] overflow-clip bg-[var(--orbit-bg)] pt-[76px] md:min-h-[100dvh]">
+      {/* Text then stories on phones. Side by side from tablet up, with the orbit running to the screen's edge. */}
+      <div className="relative grid grid-cols-[minmax(0,1fr)] md:min-h-[calc(100dvh-76px)] md:grid-cols-[minmax(0,45fr)_minmax(0,55fr)]">
+        <div className="relative z-20 flex flex-col items-start justify-center px-4 pt-10 md:py-10 md:pl-[max(1.5rem,calc((100vw-72rem)/2))] md:pr-0">
+          <motion.div variants={rise} initial="hidden" animate="show" custom={0} className="organic-card bg-surface-strong p-7 backdrop-blur md:p-8 lg:p-10">
+            <h1 className="text-[2.6rem] font-semibold leading-[1.08] tracking-tight md:text-5xl lg:text-6xl">
               You don&apos;t need to know <span className="text-apricot-text">where to start.</span>
-            </motion.h1>
-            <motion.p variants={rise} initial="hidden" animate="show" custom={1} className="mt-5 max-w-md text-lg text-muted-foreground md:text-xl">
-              Preview what contacting support involves, check the sources, and prepare a first question with seven AI guides.
-            </motion.p>
-            <motion.div variants={rise} initial="hidden" animate="show" custom={2} className="mt-8 flex flex-wrap gap-3">
-              <motion.span whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
-                <Link
-                  href="/start"
-                  className="squish inline-flex h-14 items-center gap-2 rounded-full bg-apricot px-7 text-lg font-semibold text-ink shadow-[0_10px_30px_rgb(245_169_127/0.3)]"
-                >
-                  Help me get started <ArrowRight size={20} weight="bold" aria-hidden />
-                </Link>
-              </motion.span>
-              <motion.span whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
-                <Link
-                  href="#guides"
-                  className="squish inline-flex h-14 items-center rounded-full bg-surface-strong px-7 text-lg font-semibold backdrop-blur hover:bg-accent"
-                >
-                  Meet the guides
-                </Link>
-              </motion.span>
-            </motion.div>
-          </div>
+            </h1>
+            <p className="mt-5 max-w-md text-lg text-muted-foreground lg:text-xl">
+              Start with a guide. They&apos;ll help you work out who to talk to, and what you might say.
+            </p>
+          </motion.div>
+          <motion.div variants={rise} initial="hidden" animate="show" custom={1} className="mt-8">
+            <motion.span className="inline-block" whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
+              <Link
+                href="/start"
+                className="squish inline-flex h-14 items-center gap-2 rounded-full bg-apricot px-7 text-lg font-semibold text-ink shadow-[0_10px_30px_rgb(245_169_127/0.3)]"
+              >
+                Help me get started <ArrowRight size={20} weight="bold" aria-hidden />
+              </Link>
+            </motion.span>
+          </motion.div>
+          <motion.p variants={rise} initial="hidden" animate="show" custom={2} className="mt-4 text-sm text-muted-foreground">
+            Our Stories are examples written for this prototype, not real people.
+          </motion.p>
         </div>
-        <StoryBubbles className="mt-10 h-[440px] md:absolute md:inset-x-6 md:bottom-10 md:top-24 md:mt-0 md:h-auto" />
+        <StoryOrbit />
       </div>
     </section>
   );

@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     return fail(
       503,
       "not_configured",
-      "AI connection unavailable. No model is connected to this version of PULSE, so no reply was generated.",
+      "Guides aren’t connected in this version of PULSE, so no reply was written.",
     );
   }
 
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   try {
     output = await provider.generate({ request: req, guide: getGuide(req.guide)!, eligible });
   } catch {
-    return fail(502, "provider_error", "The AI service didn’t respond. Try again in a moment.");
+    return fail(502, "provider_error", "The guide didn’t respond. Try again in a moment.");
   }
   try {
     return Response.json(checkOutput(output, eligible), { headers: { "Cache-Control": "no-store" } });

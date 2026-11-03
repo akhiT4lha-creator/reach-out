@@ -91,7 +91,7 @@ export function safetyNotice(question: string): AnswerResponse | null {
     text: "It sounds like you might need support right now. PULSE can’t help in an emergency and nobody is monitoring this chat. Please contact a person who can help: call 999 if you are in immediate danger, NHS 111 for urgent mental health support, Samaritans on 116 123, or Childline on 0800 1111 if you are under 19.",
     sources: [],
     entry_ids: [],
-    notice: "This is an automatic safety notice, not an AI reply. It is triggered by a short list of words and is not an assessment.",
+    notice: "This is an automatic safety notice, not a reply from a guide. It is triggered by a short list of words and is not an assessment.",
   };
 }
 

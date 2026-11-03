@@ -31,7 +31,7 @@ export default function Home() {
               Different personalities. <span className="text-lavender-text">The same possibilities.</span>
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Seven AI guides with the same knowledge. Pick the conversational style that feels comfortable.
+              Four guides, one job: helping you work out who to talk to. That might be someone at home, a teacher, your school counsellor, your GP or a friend you trust. Pick the style that feels comfortable.
             </p>
           </Reveal>
           <Reveal delay={0.1} className="mt-8">
@@ -47,7 +47,7 @@ export default function Home() {
               Every first step has a <span className="text-sage-text">story.</span>
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              A first conversation can bring clarity, more questions or mixed feelings. Different people, different first steps.
+              Each one started with a guide and led to a real person. Different people, different first steps.
             </p>
             <div className="mt-5 flex flex-wrap gap-2 text-sm font-semibold">
               <span className="rounded-full bg-surface-strong px-4 py-1.5">Example stories written for this prototype, not real people</span>
@@ -71,10 +71,10 @@ export default function Home() {
               ))}
             </div>
             <h2 id="share-title" className="mt-6 text-4xl font-semibold md:text-5xl">
-              Your story could be someone&apos;s first step.
+              A guide pointed you to someone. Tell us how it went.
             </h2>
             <p className="mt-4 max-w-md text-muted-foreground">
-              Try how sharing would work. Submissions are closed until secure storage and human review are ready, so nothing is sent or saved.
+              Share who your guide pointed you towards and what happened when you reached out. Submissions are closed until secure storage and human review are ready, so for now nothing is sent or saved.
             </p>
           </Reveal>
           <Reveal delay={0.1}>

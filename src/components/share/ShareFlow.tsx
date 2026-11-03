@@ -39,8 +39,8 @@ const empty: Form = {
   consent: false,
 };
 
-const people = ["A friend", "Family", "A teacher", "School counsellor", "A GP", "A helpline", "Someone else"];
-const STEPS = ["Your first step", "How you appear publicly", "Optional private follow-up", "Review and consent"];
+const people = ["A friend", "A family member", "A teacher", "School counsellor", "A GP", "A helpline", "Someone else"];
+const STEPS = ["Who you reached out to", "How you appear publicly", "Optional private follow-up", "Review and consent"];
 const displayOptions: [Display, string][] = [
   ["anonymous", "Anonymous to readers"],
   ["pseudonym", "A pseudonym"],
@@ -57,7 +57,7 @@ function attribution(f: Form) {
 }
 
 function validate(step: number, f: Form) {
-  if (step === 0 && !f.story.trim()) return "Add a few words to try the publication preview. You don’t need a positive ending.";
+  if (step === 0 && !f.story.trim()) return "Add a few words about what happened next to try the publication preview. You don’t need a positive ending.";
   if (step === 1 && f.display === "pseudonym" && !f.name.trim()) return "Enter a pseudonym, or choose anonymous publication.";
   if (step === 2 && f.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim()))
     return "Check the email format, or leave this optional field empty.";
@@ -156,11 +156,11 @@ export function ShareFlow({ compact = false }: { compact?: boolean }) {
             {q === 0 && (
               <div className="mt-4 space-y-5">
                 <p className="text-base text-muted-foreground">
-                  Who you approached, what happened, or what stayed uncertain. Mixed experiences belong here too.
+                  Who your guide pointed you towards, what happened when you reached out, or what stayed uncertain. Mixed experiences belong here too.
                 </p>
                 <div>
                   <p className="font-semibold" id={`${id}-who`}>
-                    Who did you reach out to? <span className="font-normal text-muted-foreground">(optional)</span>
+                    Who did your guide point you to? <span className="font-normal text-muted-foreground">(optional)</span>
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-labelledby={`${id}-who`}>
                     {people.map((p) => (
@@ -187,14 +187,14 @@ export function ShareFlow({ compact = false }: { compact?: boolean }) {
                 </ul>
                 <div>
                   <label htmlFor={`${id}-story`} className="font-semibold">
-                    Your story
+                    What happened next?
                   </label>
                   <Textarea
                     id={`${id}-story`}
                     name="story"
                     value={f.story}
                     onChange={(e) => set("story", e.target.value)}
-                    placeholder="Try the preview with fictional details…"
+                    placeholder="When I reached out… (try the preview with fictional details)"
                     maxLength={2400}
                     className={cn(areaClass, "mt-2 min-h-40")}
                     {...errorProps}

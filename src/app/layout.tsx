@@ -21,7 +21,7 @@ const body = Atkinson_Hyperlegible({
 export const metadata: Metadata = {
   title: "PULSE: FIRST LOOK",
   description:
-    "Understand first. Decide later. Preview what contacting support involves, check where the information comes from, and prepare a first question with seven AI guides.",
+    "Understand first. Decide later. Guides help you work out which real person in your life to talk to, and prepare what you might say.",
 };
 
 export const viewport: Viewport = {

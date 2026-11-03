@@ -245,6 +245,83 @@ html[data-calm="true"] .lifeline {
   }
 }
 
+/* Phone "Our Stories" row: the list is repeated once, so sliding left by half loops without a jump. */
+.story-row {
+  animation: story-row 50s linear infinite;
+}
+@keyframes story-row {
+  to {
+    transform: translateX(calc(-50% - 0.375rem));
+  }
+}
+html[data-hidden="true"] .story-row {
+  animation-play-state: paused;
+}
+html[data-calm="true"] .story-row {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-row {
+    animation: none;
+  }
+}
+
+/* Hero text card: soft, uneven edges with a second loose outline, like a hand-drawn shape. */
+.organic-card {
+  position: relative;
+  border-radius: 46px 78px 54px 92px / 82px 50px 88px 58px;
+}
+.organic-card::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1.5px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 84px 52px 90px 48px / 54px 86px 50px 80px;
+  pointer-events: none;
+}
+
+/* The orbit's centre: one piece of polished sea glass in the site's orange (#f5a97f).
+   Deeper amber in the middle, paler and more see-through peach at the edge, soft and matte.
+   Change these variables to re-theme it. */
+:root {
+  --glass-deep: rgb(226 138 90 / 0.97);
+  --glass-mid: rgb(240 162 118 / 0.93);
+  --glass-edge: rgb(250 208 180 / 0.74);
+  --glass-highlight: rgb(255 244 235 / 0.5);
+  --glass-bevel-light: rgb(255 238 224 / 0.5);
+  --glass-bevel-dark: rgb(190 104 60 / 0.3);
+  --glass-shadow: rgb(226 130 78 / 0.6);
+  --orbit-bg: var(--background);
+}
+:root[data-theme="morning"] {
+  --glass-edge: rgb(250 208 180 / 0.6);
+}
+.sea-glass {
+  /* Slightly uneven, so it reads as smoothed by the sea rather than cut as a circle. */
+  border-radius: 47% 53% 45% 55% / 54% 45% 55% 46%;
+  background:
+    radial-gradient(ellipse 64% 24% at 50% 10%, var(--glass-highlight), transparent),
+    radial-gradient(circle at 50% 54%, var(--glass-deep) 0%, var(--glass-mid) 52%, var(--glass-edge) 100%);
+  /* The inner shadows make the rounded bevel. */
+  box-shadow:
+    inset 0 9px 20px var(--glass-bevel-light),
+    inset 0 -12px 24px var(--glass-bevel-dark),
+    inset 0 0 28px var(--glass-bevel-light);
+}
+/* The soft orange shadow is its own layer under the glass. A box-shadow isn't drawn beneath its own
+   box, so on see-through glass it leaves a hairline of page colour around the edge. */
+.sea-glass-shadow {
+  border-radius: 47% 53% 45% 55% / 54% 45% 55% 46%;
+  background: var(--glass-shadow);
+  filter: blur(24px);
+  transform: translateY(20px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .sea-glass {
+    background: var(--apricot);
+  }
+}
+
 /* Soft blob shape for bubbles */
 .blob {
   border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;

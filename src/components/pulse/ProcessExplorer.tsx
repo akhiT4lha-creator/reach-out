@@ -180,7 +180,7 @@ export function ProcessExplorer({
           <PencilSimpleLine size={18} weight="duotone" aria-hidden /> Help me find the words
         </button>
         <button type="button" onClick={onGuide} className={btn.secondary}>
-          <ChatsCircle size={18} weight="duotone" aria-hidden /> Ask an AI guide about this
+          <ChatsCircle size={18} weight="duotone" aria-hidden /> Ask a guide about this
         </button>
       </div>
     </div>

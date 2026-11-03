@@ -10,7 +10,7 @@ import { btn, field } from "./ui";
 
 /**
  * The editable first question. Shared across the site (page memory only).
- * Nothing is ever sent to a support service. When live AI is connected, the current draft
+ * Nothing is ever sent to a support service. When guides are connected, the current draft
  * is included with a chat question so a guide can help refine it.
  */
 export function DraftEditor({ onReview, className }: { onReview?: () => void; className?: string }) {
@@ -58,7 +58,7 @@ export function DraftEditor({ onReview, className }: { onReview?: () => void; cl
         </button>
         {onReview && (
           <button type="button" onClick={onReview} className={btn.secondary}>
-            Review wording with an AI guide <ArrowRight size={18} weight="bold" aria-hidden />
+            Review wording with a guide <ArrowRight size={18} weight="bold" aria-hidden />
           </button>
         )}
       </div>

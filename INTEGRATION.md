@@ -45,7 +45,7 @@ Errors: `{ error, code }` with `400 bad_request`, `503 not_configured`, `502 pro
 2. Read the API key from a **server-only** env var (never `NEXT_PUBLIC_*`). Add it in Vercel → Settings → Environment Variables.
 3. Return it from `getProvider()` when the key is set. `/api/status` will then report `liveConfigured: true`
    and the Send button activates.
-4. Write the seven personality prompts. They are **new** prompts, not reconstructions of the originals: same knowledge
+4. Write the four personality prompts. Every guide's job is signposting: point the young person towards the right real person in their life (see the `product-signpost` record). They are **new** prompts, not reconstructions of the originals: same knowledge
    and abilities for every guide, tone only. Each must:
    - answer only from the `eligible` records and cite them by `entry_id`;
    - return `status: "unknown"` when the records don't cover the question (a missing answer stays missing);
@@ -54,4 +54,4 @@ Errors: `{ error, code }` with `400 bad_request`, `503 not_configured`, `502 pro
    - treat the school record as fictional and "your school" as unknown.
 5. Ask the model for JSON matching `ModelOutput`, parse defensively, and let `checkOutput` do the rest.
 6. Update the privacy copy in `src/data/pulse/product.ts` (`privacy.model`) to name the provider and its retention terms.
-7. Test all seven guides against all three services before launch, including refusals and the urgent path.
+7. Test all four guides against all three services before launch, including refusals and the urgent path.

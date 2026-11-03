@@ -97,7 +97,7 @@ export function ChatApp({ guide }: { guide: Guide }) {
     requestAnimationFrame(() => input.current?.focus());
   }, []);
 
-  // The draft panel's "Review wording with an AI guide" fills this composer.
+  // The draft panel's "Review wording with a guide" fills this composer.
   useEffect(() => {
     const on = (e: Event) => compose((e as CustomEvent<string>).detail);
     window.addEventListener("pulse:compose", on);
@@ -169,13 +169,13 @@ export function ChatApp({ guide }: { guide: Guide }) {
 
   const statusText =
     connection === "checking"
-      ? "Checking the AI connection…"
+      ? "Checking the guide connection…"
       : live
-        ? "Live AI · same knowledge, your choice of personality"
-        : "AI connection unavailable";
+        ? "Guides connected · same knowledge, your choice of personality"
+        : "Guides aren’t connected yet";
 
   const rail = (onPick?: () => void) => (
-    <nav aria-label="Choose an AI guide" className="grid gap-1.5">
+    <nav aria-label="Choose a guide" className="grid gap-1.5">
       {guides.map((g) => {
         const here = g.id === guide.id;
         return (
@@ -246,7 +246,7 @@ export function ChatApp({ guide }: { guide: Guide }) {
               <GuideAvatar id={guide.id} size={48} decorative className="hidden md:block" />
               <div className="min-w-0">
                 <h1 ref={heading} tabIndex={-1} className="truncate text-xl font-semibold outline-none md:text-2xl">
-                  {guide.name} <span className="font-sans text-sm font-normal text-muted-foreground">AI guide</span>
+                  {guide.name} <span className="font-sans text-sm font-normal text-muted-foreground">Guide</span>
                 </h1>
                 <p className="truncate text-sm text-muted-foreground">{guide.role}</p>
               </div>
@@ -288,9 +288,9 @@ export function ChatApp({ guide }: { guide: Guide }) {
                 <div className="mt-3 flex items-center gap-4 rounded-[28px] bg-apricot/15 p-5">
                   <Buddy className="w-16 shrink-0 md:w-20" />
                   <div className="min-w-0">
-                    <p className="font-heading text-lg font-semibold">AI connection unavailable</p>
+                    <p className="font-heading text-lg font-semibold">Guides aren’t connected yet</p>
                     <p className="mt-1 text-base">
-                      No AI model is connected to this version of PULSE, so {guide.name} can’t reply yet. You can still write a question here,
+                      Guides aren’t connected in this version of PULSE, so {guide.name} can’t reply yet. You can still write a question here,
                       preview the process or prepare your first question.
                     </p>
                     <div className="mt-2 flex flex-wrap gap-x-5">
@@ -430,12 +430,12 @@ export function ChatApp({ guide }: { guide: Guide }) {
                     send(composer);
                   }
                 }}
-                placeholder={live ? "What would you like to talk through?" : "Write a question (sending needs a connected AI)"}
+                placeholder={live ? "What would you like to talk through?" : "Write a question (sending needs a connected guide)"}
                 className="max-h-36 min-h-14 flex-1 resize-none bg-transparent px-3 py-2 text-base text-foreground outline-none placeholder:text-muted-foreground/90 md:text-lg"
               />
               <button
                 type="submit"
-                aria-label={live ? "Send question" : "Send question (unavailable: no AI model connected)"}
+                aria-label={live ? "Send question" : "Send question (unavailable: guides aren’t connected)"}
                 disabled={loading || !live || !composer.trim()}
                 className="squish grid size-12 shrink-0 place-items-center rounded-full bg-apricot text-ink disabled:cursor-not-allowed disabled:opacity-45"
               >
@@ -443,7 +443,7 @@ export function ChatApp({ guide }: { guide: Guide }) {
               </button>
             </div>
             <p className="mx-auto mt-2 max-w-3xl px-2 text-sm text-muted-foreground">
-              Keep personal details out. {guide.name} is an AI guide, not a counsellor.{" "}
+              Keep personal details out. {guide.name} is a guide, not a real person or a counsellor.{" "}
               <button type="button" onClick={() => openPanel("how")} className="font-semibold underline underline-offset-4 hover:no-underline">
                 Privacy &amp; how it works
               </button>
@@ -452,7 +452,7 @@ export function ChatApp({ guide }: { guide: Guide }) {
         </section>
       </div>
 
-      <Panel open={railOpen} onClose={() => setRailOpen(false)} title="Switch guide" description="All seven share the same knowledge. Switching starts a new conversation; your first question stays.">
+      <Panel open={railOpen} onClose={() => setRailOpen(false)} title="Switch guide" description="All four share the same knowledge. Switching starts a new conversation; your first question stays.">
         {rail(() => setRailOpen(false))}
         <div className="mt-4 flex flex-wrap gap-2">
           <button

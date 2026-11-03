@@ -11,7 +11,7 @@ export const product = {
   tagline: "A first look. Before your first step.",
   status: "An independent student prototype. Not a support service.",
   purpose:
-    "Explore what contacting support involves and prepare a first question, with seven AI guides.",
+    "Work out who to talk to and prepare what you might say, with a guide as your first step.",
 };
 
 /** The editable first-question template. */
@@ -21,15 +21,15 @@ export const DEFAULT_DRAFT =
 export const howItWorks = [
   {
     title: "Choose a personality",
-    body: "Seven AI personalities share the same sources and abilities. Choose a conversational style, not a topic. They are not clinicians.",
+    body: "Four guides share the same sources and abilities. Choose a conversational style, not a topic. They aren’t real people or clinicians.",
   },
   {
     title: "Ask a process question",
-    body: "Ask in your own words, or try an opening question. When a model is connected, every chat reply comes from it, apart from labelled system and safety notices. Personality changes the tone, not the available knowledge. There is no scripted chat mode.",
+    body: "Ask in your own words, or try an opening question. When guides are connected, every chat reply comes from them, apart from labelled system and safety notices. Personality changes the tone, not the available knowledge. There is no scripted chat mode.",
   },
   {
-    title: "Check, edit, decide",
-    body: "Open the source details, prepare your own question and choose whether to use it. Nothing is sent for you.",
+    title: "Then talk to someone",
+    body: "Your guide can suggest who to speak to, such as someone at home, a teacher, a school counsellor, your GP or a friend you trust. Check the sources, prepare your words and decide when to use them. Nothing is sent for you.",
   },
 ];
 
@@ -39,11 +39,12 @@ export const privacy = {
   storage:
     "PULSE does not write conversations or your first question to a database or to browser storage. The only things this site saves in your browser are your Calm mode and theme choices.",
   model:
-    "No AI model is connected to this version, so nothing you type is sent anywhere. If a provider is connected later, pressing Send would pass your current question, up to eight recent question-and-answer turns, your draft question and the eligible source records through this site’s server to that provider. That provider’s retention terms would then apply.",
+    "Guides aren’t connected in this version, so nothing you type is sent anywhere. If they are connected later through an outside provider, pressing Send would pass your current question, up to eight recent question-and-answer turns, your draft question and the eligible source records through this site’s server to that provider. That provider’s retention terms would then apply.",
   links: "External source and contact links open other websites. Nothing from PULSE is transferred to them.",
 };
 
 export const limitations = [
+  "Guides are a first step, not the solution. Their job is to point you towards someone in your life who can help.",
   "No diagnosis, counselling, symptom assessment or treatment advice.",
   "A missing answer stays missing. Guides should say when a source does not cover something.",
   "Automated checks can miss errors. Inspect the linked source for important details.",

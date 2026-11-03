@@ -9,7 +9,7 @@ import { GuideAvatar } from "./GuideAvatar";
 import { usePulse } from "./PulseProvider";
 import { btn, chip } from "./ui";
 
-/** Meet the seven guides: preview any of them freely, then start a chat. */
+/** The four guides, shown by personality type: pick one, then start a chat. */
 export function GuideGallery() {
   const { startChat } = usePulse();
   const [picked, setPicked] = useState<GuideId>("ari");
@@ -24,17 +24,18 @@ export function GuideGallery() {
           </button>
         ))}
       </div>
-      <p className="mt-3 text-base text-muted-foreground">A style preference, not an assessment. All seven are below.</p>
+      <p className="mt-3 text-base text-muted-foreground">A style preference, not an assessment. All four are below.</p>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-12">
-        <ul aria-label="Preview a guide" className="grid grid-cols-4 gap-3 sm:gap-5">
+        <ul aria-label="Preview a guide" className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
           {guides.map((x, i) => {
             const on = x.id === picked;
             return (
-              <li key={x.id} className={cn(i === 4 && "col-start-1 sm:col-start-auto", i >= 4 && "sm:translate-x-1/2")}>
+              <li key={x.id}>
                 <motion.button
                   type="button"
                   aria-pressed={on}
+                  aria-label={`${x.name}, ${x.role}`}
                   onClick={() => setPicked(x.id)}
                   whileHover={{ y: -5 }}
                   whileTap={{ scale: 0.96 }}
@@ -50,7 +51,7 @@ export function GuideGallery() {
                   >
                     <GuideAvatar id={x.id} size={112} decorative className="h-auto w-full rounded-none" />
                   </span>
-                  <span className="font-heading text-base font-semibold sm:text-lg">{x.name}</span>
+                  <span className="font-heading text-base font-semibold leading-tight sm:text-lg">{x.role}</span>
                 </motion.button>
               </li>
             );
@@ -72,16 +73,12 @@ export function GuideGallery() {
                 <GuideAvatar id={g.id} size={84} decorative className="blob" />
                 <div>
                   <h3 className="text-3xl font-semibold">{g.name}</h3>
-                  <p className="text-muted-foreground">{g.role} · fictional AI</p>
+                  <p className="text-muted-foreground">{g.role}</p>
                 </div>
               </div>
-              <p className="mt-5 font-heading text-2xl leading-snug">&ldquo;{g.sampleOpening}&rdquo;</p>
-              <p className="mt-2 text-sm text-muted-foreground">Illustrative opening, not a generated reply.</p>
-              <p className="mt-4 text-base">{g.short}.</p>
               <button type="button" onClick={() => startChat(g.id)} className={`${btn.primary} mt-6`}>
                 Start with {g.name} <ArrowRight size={20} weight="bold" aria-hidden />
               </button>
-              <p className="mt-3 text-sm text-muted-foreground">Preview freely. Opening a chat starts a new conversation.</p>
             </motion.div>
           </AnimatePresence>
         </div>

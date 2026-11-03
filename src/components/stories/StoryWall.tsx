@@ -48,7 +48,7 @@ function StoryCard({ story, index }: { story: Story; index: number }) {
   );
 }
 
-const filters: (StoryTag | "all")[] = ["all", "friend", "family", "school", "helpline", "gp"];
+const filters: (StoryTag | "all")[] = ["all", "friend", "family", "school", "gp"];
 
 export function StoryWall() {
   const [filter, setFilter] = useState<StoryTag | "all">("all");

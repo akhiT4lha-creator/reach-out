@@ -29,7 +29,7 @@ export function PulsePanels() {
         open={p.panel === "draft"}
         onClose={close}
         title="Your question, in your words"
-        description="Change anything you like. Nothing is sent for you. If you ask an AI guide and press Send, the current draft is included with your question."
+        description="Change anything you like. Nothing is sent for you. If you ask a guide and press Send, the current draft is included with your question."
       >
         <DraftEditor
           onReview={() => {
@@ -107,12 +107,11 @@ export function PulsePanels() {
             <p>{privacy.model}</p>
             <p>{privacy.links}</p>
           </Disclosure>
-          <Disclosure title="One model, seven personalities">
+          <Disclosure title="One set of knowledge, four personalities">
             <p>
-              PULSE is designed around one shared language-model backend with seven personality styles. They are not seven separately
-              trained models, and they are not specialists for different conditions. All of them can use the same eligible source records
-              and help with every supported topic. Changing personality starts a fresh conversation. Buddy is the site’s navigation mascot,
-              not an AI guide.
+              PULSE’s guides are four personality styles built on one shared system. They aren’t real people, and they aren’t specialists for
+              different conditions. All of them can use the same eligible source records and help with every supported topic. Changing
+              personality starts a fresh conversation. Buddy is the site’s navigation mascot, not a guide.
             </p>
           </Disclosure>
           <Disclosure title="Sources and limitations">
@@ -128,7 +127,7 @@ export function PulsePanels() {
               independent service review is pending. The school example is fictional. The NHS finding comes from the supplied dataset.
             </p>
             <p>
-              No AI model is connected, so chat replies are unavailable. Process previews, sources, stories and the question editor all work
+              Guides aren’t connected yet, so chat replies are unavailable. Process previews, sources, stories and the question editor all work
               without it. Document extraction and reviewer publishing are not built.
             </p>
           </Disclosure>

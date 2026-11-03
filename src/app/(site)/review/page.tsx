@@ -18,7 +18,7 @@ export default function ReviewPage() {
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-semibold md:text-5xl">Source register</h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          Every record the AI guides could draw on, with where it came from and how it was checked. This is a read-only reviewer preview:
+          Every record the guides could draw on, with where it came from and how it was checked. This is a read-only reviewer preview:
           reviewer sign-in, document extraction and publishing are not built, so nothing here can be edited.
         </p>
         <p className="mt-4 max-w-2xl rounded-[20px] bg-lavender/15 px-5 py-3 text-base">

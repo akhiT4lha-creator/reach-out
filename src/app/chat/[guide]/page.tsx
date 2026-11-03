@@ -11,7 +11,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/chat/[guide]">): Promise<Metadata> {
   const { guide } = await params;
   const g = getGuide(guide);
-  return { title: g ? `Talk with ${g.name} | PULSE: FIRST LOOK` : "AI guide | PULSE: FIRST LOOK" };
+  return { title: g ? `Talk with ${g.name} | PULSE: FIRST LOOK` : "Guide | PULSE: FIRST LOOK" };
 }
 
 export default function ChatPage({ params }: PageProps<"/chat/[guide]">) {

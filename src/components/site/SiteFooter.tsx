@@ -16,8 +16,8 @@ export function SiteFooter() {
             {product.fullName}. {product.tagline}
           </p>
           <p className="text-muted-foreground">
-            {product.status} The seven guides are AI, not people, and won&apos;t diagnose or give advice. Buddy is our
-            mascot, not an AI. <CrisisButton variant="text" />
+            {product.status} Guides aren&apos;t real people. They&apos;re a first step towards someone who is, and they won&apos;t diagnose or give
+            advice. Buddy is our mascot, not a guide. <CrisisButton variant="text" />
           </p>
         </div>
         <div className="space-y-3 text-base text-muted-foreground">
@@ -39,7 +39,7 @@ export function SiteFooter() {
               Sharing preview
             </Link>
           </p>
-          <p className="text-sm">Built on the Reach Out prototype (London AI Campus x GSK).</p>
+          <p className="text-sm">Built on the Reach Out prototype.</p>
         </div>
       </div>
     </footer>

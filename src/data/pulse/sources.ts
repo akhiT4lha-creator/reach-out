@@ -41,7 +41,7 @@ export const NHS_URL =
   "https://digital.nhs.uk/data-and-information/publications/statistical/mental-health-of-children-and-young-people-in-england/2023-wave-4-follow-up/";
 
 // The export first gave some records persona-specific access, then expanded every record
-// to all seven guides. That final shared-access behaviour is what we keep.
+// to all guides. That final shared-access behaviour is what we keep.
 // Every guide shares the same three starter questions in the export.
 const STARTERS = [
   "What happens when I first get in touch?",
@@ -111,7 +111,7 @@ export const sources: SourceRecord[] = [
   childline(
     "cl-chat",
     "Online chat steps",
-    "Create a Childline account, open its chat bot and choose to start a chat. When a counsellor becomes available, you can exchange messages. The page gives no guaranteed queue time.",
+    "Create a Childline account, open its chat and choose to start a chat. When a counsellor becomes available, you can exchange messages. The page gives no guaranteed queue time.",
     CHAT,
     "Using 1-2-1 chats",
     "When a Childline counsellor is available",
@@ -212,9 +212,9 @@ export const sources: SourceRecord[] = [
     content_class: "product",
     topic: "Using FIRST LOOK",
     approved_explanation:
-      "FIRST LOOK is a preview of how asking for support could work. Every personality can explain contact, privacy, choices, access and the evidence, and help prepare a question. Choose the conversational style you prefer. You do not need to tell us your personal story. The school service in this version is a clearly labelled fictional example.",
+      "FIRST LOOK is a preview of how asking for support could work. Every personality can help you work out who to talk to, explain contact, privacy, choices, access and the evidence, and help prepare a question. Choose the conversational style you prefer. You do not need to tell us your personal story. The school service in this version is a clearly labelled fictional example.",
     source_quote:
-      "This version offers seven focused guides, fictional service examples and the supplied NHS survey finding. It does not diagnose, counsel or send messages.",
+      "This version offers four focused guides, fictional service examples and the supplied NHS survey finding. It does not diagnose, counsel or send messages.",
     source_title: "PULSE product scope",
     source_url: "",
     source_location: "Prototype scope",
@@ -226,6 +226,27 @@ export const sources: SourceRecord[] = [
     allowed_guide_ids: ALL_GUIDES,
     is_demo: false,
     questions: [...STARTERS],
+  },
+  {
+    entry_id: "product-signpost",
+    service_id: "all",
+    content_class: "product",
+    topic: "Who to talk to",
+    approved_explanation:
+      "A guide is a first step, not the solution. It can help you think about who in your life you would feel OK talking to, such as a family member, a teacher, a school counsellor, your GP or a friend you trust, and what you might say to them. The choice is always yours. If you need help right now, use Need help now? to reach urgent support.",
+    source_quote:
+      "A guide points young people towards the right real person in their life. It does not diagnose, counsel or replace that person.",
+    source_title: "PULSE product scope",
+    source_url: "",
+    source_location: "Prototype scope",
+    source_version: "v1",
+    review_status: "published",
+    review_type: "Implementation description",
+    reviewer: "Not a clinical review",
+    reviewed_at: "",
+    allowed_guide_ids: ALL_GUIDES,
+    is_demo: false,
+    questions: ["Who could I talk to first?", "How do I bring it up with them?"],
   },
   {
     entry_id: "product-words",

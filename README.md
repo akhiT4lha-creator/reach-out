@@ -4,7 +4,7 @@
 
 PULSE helps young people understand what contacting a support service involves *before* deciding what to share.
 Visitors can preview a service's process step by step, check where every claim comes from, prepare an editable
-first question, read example stories, and (once a model is connected) talk it through with one of seven AI guides.
+first question, read example stories, and (once a model is connected) talk it through with one of four guides, whose job is to point them towards the right real person in their life.
 
 It is built inside the **Reach Out** prototype (London AI Campus x GSK: AI for Youth Wellbeing): Reach Out sets the
 look and interactions; PULSE sets the product, its knowledge boundaries and its capabilities.
@@ -29,7 +29,7 @@ No environment variables are needed. **No AI model is connected**, so the chat s
 | --- | --- |
 | `/` | In reading order: hero → About (what PULSE is, the 3-step path) → Why it matters (NHS evidence) → Step 1 the process → Step 2 your question → Step 3 the guides → stories → sharing preview |
 | `/start` | Guided start hosted by Buddy. Each choice opens a working tool (process, question, guides, stories, "not sure"). `/reach-out` redirects here |
-| `/chat/[guide]` | Conversation with one of seven guides (`ari`, `noor`, `theo`, `maya`, `ellis`, `robin`, `quinn`) |
+| `/chat/[guide]` | Conversation with one of four guides (`ari`, `noor`, `theo`, `maya`) |
 | `/stories/[id]` | An example story with "what helped", the reading boundary, and next steps |
 | `/share` | Sharing preview: anonymity choices, private follow-up, consent, publication preview. Submission is disabled |
 | `/review` | Read-only source register (reviewer preview). `/admin` redirects here |
@@ -43,7 +43,8 @@ and **Need help now?** (urgent human help).
 | What | File |
 | --- | --- |
 | Homepage section order (also drives the nav) | `src/data/pulse/sections.ts` |
-| Seven guides (names, voices, intros, starters) | `src/data/pulse/guides.ts` |
+| Hero "Our Stories" orbit content (placeholder array) | `src/data/storyOrbit.ts` |
+| Four guides (names, voices, intros, starters) | `src/data/pulse/guides.ts` |
 | Source register (every record, incl. the draft) | `src/data/pulse/sources.ts` |
 | Service contexts and process steps | `src/data/pulse/services.ts` |
 | NHS finding and its limitations | `src/data/pulse/evidence.ts` |

@@ -5,7 +5,7 @@ import { useMotionPrefs } from "@/components/motion/MotionProvider";
 import { cn } from "@/lib/utils";
 
 // Buddy: a soft, non-human cloud-blob host. Not a person, not a known character.
-// Buddy is PULSE's navigation and sharing mascot. Buddy is NOT an AI and not an eighth guide:
+// Buddy is PULSE's navigation and sharing mascot. Buddy is NOT a guide:
 // everything Buddy says is scripted.
 // States: idle (breathing + blinking), talking (mouth moves), happy (big smile, eyes closed).
 // `bump` changes on each step so Buddy does a small hop of encouragement.

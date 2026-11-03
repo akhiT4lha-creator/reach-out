@@ -40,7 +40,7 @@ export function ChatAnswer({
       <div className="min-w-0 flex-1 rounded-[28px] rounded-tl-lg bg-surface p-5 md:p-6">
         <p className="flex flex-wrap items-center gap-2 text-sm font-semibold">
           <span className="font-heading text-base">{guide.name}</span>
-          <span className="rounded-full bg-sky/20 px-2.5 py-0.5">{answer.mode === "live" ? "AI reply" : "System notice"}</span>
+          <span className="rounded-full bg-sky/20 px-2.5 py-0.5">{answer.mode === "live" ? "Guide reply" : "System notice"}</span>
           {statusLabel[answer.status] && <span className="rounded-full bg-apricot/25 px-2.5 py-0.5">{statusLabel[answer.status]}</span>}
         </p>
         <p className="mt-3 whitespace-pre-wrap break-words">{answer.text}</p>

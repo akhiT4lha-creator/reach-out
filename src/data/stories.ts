@@ -1,12 +1,14 @@
 // ILLUSTRATIVE EXAMPLES FOR THE PROTOTYPE.
 // Always label these as examples. They are NOT approved community contributions, and they are
-// never used as sources for the PULSE AI guides. Genuine contributions need secure submission
+// never used as sources for the PULSE guides. Genuine contributions need secure submission
 // and human review, which do not exist yet (see `genuineStories` below).
 // These stories were written for the hackathon demo. They are not real people.
+// Every story follows the same arc: talked to a guide, the guide encouraged them to speak to a
+// specific person, they did, and here's what changed. First person, two or three sentences.
 // Safe-story rules: focus on the act of reaching out and what helped.
 // No details of distress, no methods, weights or quantities. Hope and recovery only.
 
-export type StoryTag = "friend" | "family" | "school" | "helpline" | "gp";
+export type StoryTag = "friend" | "family" | "school" | "gp";
 
 export type Story = {
   id: string;
@@ -25,7 +27,6 @@ export const storyTagLabels: Record<StoryTag, string> = {
   friend: "Talked to a friend",
   family: "Talked to family",
   school: "Talked to a teacher",
-  helpline: "Called a helpline",
   gp: "Saw a GP",
 };
 
@@ -36,11 +37,11 @@ export const stories: Story[] = [
     age: 16,
     avatarSeed: "sami-dusk",
     reachedOutTo: "My best friend",
-    opening: "I typed the message about six times before I sent it.",
+    opening: "I told my guide I'd felt rubbish for weeks.",
     body: [
-      "I typed the message about six times before I sent it. In the end it just said: “Can we talk later? Not about anything big, I just feel a bit rubbish.”",
-      "Jay replied in about a minute. We went for a walk after school and I mostly talked about nothing, then about the stuff that had been sitting on me for weeks.",
-      "He didn't fix anything, and he didn't need to. He just said he was glad I told him, and that he'd felt like that too sometimes. A month later we both went to our school's wellbeing drop-in together.",
+      "I told my guide I'd felt rubbish for weeks.",
+      "My guide asked who already knew me well, and encouraged me to message my best friend, Jay.",
+      "We went for a walk after school, and now I'm not carrying it all on my own.",
     ],
     whatHelped: "Saying it badly was fine. I didn't need the perfect words.",
     tags: ["friend"],
@@ -52,11 +53,11 @@ export const stories: Story[] = [
     age: 15,
     avatarSeed: "priya-sage",
     reachedOutTo: "My form tutor",
-    opening: "I stayed behind after registration and asked if she had five minutes.",
+    opening: "I asked my guide how to tell someone about school.",
     body: [
-      "I stayed behind after registration and asked Ms Okafor if she had five minutes. My hands were shaking a bit, which felt silly.",
-      "I told her I'd been finding it hard to focus and that I didn't really feel like myself. She listened properly and then asked what I wanted to happen next, which I didn't expect.",
-      "She helped me book a chat with the school counsellor and checked in with me every Friday. It's a small thing, but knowing someone at school knew made the days feel lighter.",
+      "I asked my guide how to tell someone about school.",
+      "My guide suggested my form tutor, Ms Okafor, and helped me work out how to start.",
+      "I stayed behind after registration, and now she checks in with me every Friday.",
     ],
     whatHelped: "She asked me what I wanted, instead of deciding for me.",
     tags: ["school"],
@@ -68,11 +69,11 @@ export const stories: Story[] = [
     age: 17,
     avatarSeed: "kofi-sky",
     reachedOutTo: "My older sister",
-    opening: "My sister noticed before I said anything, but I still had to say it.",
+    opening: "I didn't know how to say I needed help.",
     body: [
-      "My sister Ama noticed before I said anything, but I still had to be the one to say it out loud. We were washing up and I just went, “I think I need some help.”",
-      "She didn't make it weird. She asked if I wanted her to come with me to talk to Mum, and she did.",
-      "We went to the GP together a couple of weeks later. Having her in the waiting room made the whole thing feel normal, like any other appointment.",
+      "I didn't know how to say I needed help.",
+      "My guide asked who I felt most at ease with, and encouraged me to start with my sister, Ama.",
+      "I told her while we were washing up, and a couple of weeks later she came with me to the GP.",
     ],
     whatHelped: "Having someone come with me for the next step.",
     tags: ["family"],
@@ -83,15 +84,15 @@ export const stories: Story[] = [
     displayName: "Maddie",
     age: 14,
     avatarSeed: "maddie-lavender",
-    reachedOutTo: "Childline",
-    opening: "I didn't want to talk to anyone I knew, so I used Childline's online chat.",
+    reachedOutTo: "My auntie",
+    opening: "I started with a guide, not ready to tell anyone yet.",
     body: [
-      "I didn't want to talk to anyone I knew yet, so I used Childline's online chat one evening. I liked that I could type and take my time.",
-      "The counsellor was really kind. They didn't rush me, and they helped me think about which adult in my life I might feel OK talking to.",
-      "A week later I told my auntie. Practising on the chat first made it so much easier to find the words.",
+      "I started with a guide, not ready to tell anyone yet.",
+      "We worked out that my auntie was the adult I felt most OK with, and my guide encouraged me to tell her.",
+      "I told her a week later, and now I've got someone to go to when things feel heavy.",
     ],
     whatHelped: "Practising what I wanted to say somewhere safe first.",
-    tags: ["helpline"],
+    tags: ["family"],
     illustrative: true,
   },
   {
@@ -100,11 +101,11 @@ export const stories: Story[] = [
     age: 18,
     avatarSeed: "rhys-apricot",
     reachedOutTo: "My GP",
-    opening: "I booked the appointment online so I didn't have to ring.",
+    opening: "I told my guide I could handle it all on my own.",
     body: [
-      "I booked the appointment online so I didn't have to ring up. I wrote a few notes on my phone because I knew I'd forget everything once I sat down.",
-      "I basically read my notes out. The GP said that was really helpful and talked me through some options, including a local service for young people.",
-      "It wasn't an instant fix, but walking out of there I felt like I'd started something. That felt huge.",
+      "I told my guide I could handle it all on my own.",
+      "My guide encouraged me to see my GP anyway, and to write a few notes on my phone first.",
+      "I read my notes out at the appointment, and I walked out with a plan and a local service to try.",
     ],
     whatHelped: "Writing notes on my phone so I didn't have to remember.",
     tags: ["gp"],
@@ -116,11 +117,11 @@ export const stories: Story[] = [
     age: 16,
     avatarSeed: "amara-bloom",
     reachedOutTo: "My dad",
-    opening: "I told my dad in the car, because then we didn't have to look at each other.",
+    opening: "I asked my guide how to open up at home.",
     body: [
-      "I told my dad in the car on the way back from netball, because then we didn't have to look at each other.",
-      "He was quiet for a bit and I panicked, but then he said, “Thank you for telling me. We'll figure it out together.”",
-      "Now we have a thing where I can just say “car chat?” and he knows I want to talk. It's become one of my favourite parts of the week.",
+      "I asked my guide how to open up at home.",
+      "My guide suggested trying my dad, at a moment that felt easy rather than a big sit-down talk.",
+      "I told him in the car after netball, and now “car chat?” is our thing whenever I need to talk.",
     ],
     whatHelped: "Picking a moment that felt easy, not a big sit-down talk.",
     tags: ["family"],
@@ -132,11 +133,11 @@ export const stories: Story[] = [
     age: 15,
     avatarSeed: "theo-cloud",
     reachedOutTo: "Our school counsellor",
-    opening: "There was a box outside the counsellor's room where you could leave a note.",
+    opening: "I told my guide I didn't want a big fuss at school.",
     body: [
-      "There was a box outside the counsellor's room where you could leave a note with your name. I walked past it for about two weeks.",
-      "When I finally dropped one in, she found me the next day and we booked a time. It was just a room with comfy chairs and a box of tissues nobody made you use.",
-      "We met a few times. Mostly she helped me work out what I actually needed, and who else I could lean on.",
+      "I told my guide I didn't want a big fuss at school.",
+      "My guide encouraged me to speak to our school counsellor, starting in the smallest way I could.",
+      "I left a note in the box outside her room, she found me the next day, and now I know who to go to.",
     ],
     whatHelped: "A small, low-pressure first step, like a note in a box.",
     tags: ["school"],
@@ -147,15 +148,15 @@ export const stories: Story[] = [
     displayName: "Leila",
     age: 17,
     avatarSeed: "leila-moon",
-    reachedOutTo: "A friend online",
-    opening: "My closest friend lives two hours away, so I sent her a voice note.",
+    reachedOutTo: "My mum",
+    opening: "My closest friend had moved away, so I tried a guide.",
     body: [
-      "My closest friend Hana lives two hours away now, so I sent her a voice note at about 11pm saying I'd been struggling.",
-      "She called me the next morning and we talked for ages. She encouraged me to tell someone nearby as well, and helped me plan what to say.",
-      "I told my mum that weekend. Hana texted me afterwards to ask how it went, which meant a lot.",
+      "My closest friend had moved away, so I tried a guide.",
+      "My guide encouraged me to tell someone nearby, and we landed on my mum.",
+      "I told her that weekend, and things at home have felt easier since.",
     ],
-    whatHelped: "A friend who cheered me on to tell someone else too.",
-    tags: ["friend"],
+    whatHelped: "Having someone close by who knows.",
+    tags: ["family"],
     illustrative: true,
   },
   {
@@ -163,15 +164,15 @@ export const stories: Story[] = [
     displayName: "Jordan",
     age: 19,
     avatarSeed: "jordan-tide",
-    reachedOutTo: "Shout (text line)",
-    opening: "Texting felt easier than talking, so I texted SHOUT to 85258.",
+    reachedOutTo: "My flatmate",
+    opening: "Typing felt easier than talking, so I tried a guide.",
     body: [
-      "Texting felt way easier than talking, so one night I texted SHOUT to 85258. I wasn't even sure what I'd say.",
-      "The volunteer was calm and friendly. By the end I felt steadier and had a plan to talk to my flatmate and my uni's wellbeing team.",
-      "I did both that week. I'm still glad that first message was just a text.",
+      "Typing felt easier than talking, so I tried a guide.",
+      "My guide asked who was around me day to day, and encouraged me to talk to my flatmate.",
+      "I told them that week, and we went along to my uni's wellbeing team together.",
     ],
     whatHelped: "Starting with the way of talking that felt easiest for me.",
-    tags: ["helpline"],
+    tags: ["friend"],
     illustrative: true,
   },
 ];
@@ -181,7 +182,7 @@ export const genuineStories: Story[] = [];
 
 /** Shown wherever a story is read. From PULSE's reflection boundary. */
 export const storyBoundary =
-  "One person’s experience, not professional guidance or a promise of what will happen for someone else. Stories are not sources for PULSE’s AI guides.";
+  "One person’s experience, not professional guidance or a promise of what will happen for someone else. Stories are not sources for PULSE’s guides.";
 
 export function getStory(id: string) {
   return stories.find((s) => s.id === id);
